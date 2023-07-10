@@ -4,8 +4,13 @@
 $(function () {
   const currentHour = dayjs().hour()
   const $timeBlocks = $('.time-block')
+  const $saveBtn = $(".saveBtn")
   
   $timeBlocks.each(function() {
+    const key = $(this).attr('id')
+    const $textArea = $(this).children('textarea')
+    $textArea.val(localStorage.getItem(key))
+
     var hour = $(this).attr('id').split('-')[1]
     hour = (Number(hour))
     if (hour < currentHour) $(this).addClass('past')
@@ -13,7 +18,11 @@ $(function () {
     else $(this).addClass('future')
   })
   
-
+  $saveBtn.click(function() {
+    const key = $(this).parent().attr('id')
+    const value = $(this).parent().children('textarea').val()
+    localStorage.setItem(key, value)
+  })
 
 
 
