@@ -5,6 +5,71 @@ $(function () {
   const currentHour = dayjs().hour()
   const $timeBlocks = $('.time-block')
   const $saveBtn = $(".saveBtn")
+  const $dayDisplay = $("#currentDay")
+
+  var dayString
+  switch(dayjs().day()) {
+    case 0:
+      dayString = "Sunday"
+    break
+    case 1:
+      dayString = "Monday"
+    break
+    case 2:
+      dayString = "Tuesday"
+    break
+    case 3:
+      dayString = "Wednesday"
+    break
+    case 4:
+      dayString = "Thursday"
+    break
+    case 5:
+      dayString = "Friday"
+    break
+    case 6:
+      dayString = "Saturday"
+  }
+
+  switch(dayjs().month()) {
+    case 0:
+      dayString += ", January"
+    break
+    case 1:
+      dayString += ", February"
+    break
+    case 2:
+      dayString += ", March"
+    break
+    case 3:
+      dayString += ", April"
+    break
+    case 4:
+      dayString += ", May"
+    break
+    case 5:
+      dayString += ", June"
+    break
+    case 6:
+      dayString += ", July"
+    break
+    case 7:
+      dayString += ", August"
+    break
+    case 8:
+      dayString += ", September"
+    break
+    case 9:
+      dayString += ", October"
+    break
+    case 10:
+      dayString += ", November"
+    break
+    case 11:
+      dayString += ", December"
+  }
+  dayString += (" " + dayjs().date() + ", " + dayjs().year())
+  $dayDisplay.text(dayString)
   
   $timeBlocks.each(function() {
     const key = $(this).attr('id')
